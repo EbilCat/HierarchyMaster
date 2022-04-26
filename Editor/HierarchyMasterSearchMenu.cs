@@ -398,8 +398,17 @@ namespace HierarchyMaster
 
                 return isEqual;
             }
-        };
 
+            public override int GetHashCode()
+            {
+                int hashCode = -248399428;
+                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(componentFilter);
+                hashCode = hashCode * -1521134295 + includeChildrenWhenFiltering.GetHashCode();
+                hashCode = hashCode * -1521134295 + evaluationOperatorIndex.GetHashCode();
+                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(matchValue);
+                return hashCode;
+            }
+        }
         private List<SearchEntry> searchHistory = new List<SearchEntry>();
         private int searchHistoryIndex = -1;
 
